@@ -50,7 +50,7 @@ test = function () {
 	mustEqual(bathTemperature(82.6, 18), 15, "sample bath temperature test");
 }
 
-
+//changes the user-inputted values into numbers from strings
 function inputValueSampleTemp() {
 	return(parseFloat(document.getElementById("sampletemperature").value));
 }
@@ -59,15 +59,14 @@ function inputValueBathTemp() {
 	return(parseFloat(document.getElementById("bathtemperature").value));
 }
 
+function computeHumidity() {
+	console.log(humidity(inputValueSampleTemp(), inputValueBathTemp()));
+}
 
 // //adding event listener to know that user has changed (entered) a value into the field
-document.getElementById("sampletemperature").addEventListener("change", function(event) {
-	console.log(humidity(inputValueSampleTemp(), inputValueBathTemp()));
-});
+document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
 
-document.getElementById("bathtemperature").addEventListener("change", function(event) {
-	console.log(humidity(inputValueSampleTemp(), inputValueBathTemp()));
-});
+document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
 
 
 
