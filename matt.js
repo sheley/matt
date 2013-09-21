@@ -9,14 +9,14 @@ var log10 = function (x) {
 var a_ant=5.402;
 var b_ant=1838.7;
 var c_ant=-31.7;
-	
+
 	//Shift °C to K
 CtoK=273.18;
 
 var humidity = function (sampTemp, bathTemp) {
     	sampTempE=sampTemp+CtoK;
     	bathTempE=bathTemp+CtoK;
-    	return(Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant))));
+    	return(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant))));
 }
 
 var sampleTemperature = function(relHum, bathTemp) {
@@ -45,7 +45,7 @@ var mustEqual = function(a, b, testName) {
 
 
 test = function () {
-	mustEqual(humidity(25, 10.4694), .40, "humidity test");
+	mustEqual(humidity(25, 10.4694), 40, "humidity test");
 	mustEqual(sampleTemperature(75, 15), 19.5491, "sample temperature test");
 	mustEqual(bathTemperature(82.6, 18), 15, "sample bath temperature test");
 }
