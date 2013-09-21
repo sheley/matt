@@ -72,3 +72,39 @@ document.getElementById("bathtemperature").addEventListener("change", computeHum
 //when a radio button is selected, the matching input field should become hidden and the
 //the solution field should be displayed instead
 
+//turn nodelist into array so we can use .forEach
+function radioButtons () {
+	return([].slice.call(document.getElementsByName("unknown")));
+};
+
+
+function names () {
+	return [ "humidity"
+			, "sampletemperature"
+			, "bathtemperature"
+	]
+};
+
+//adds the class to form based on radio button selection by removing classes of all
+//and adding back the class of the one selected
+
+function solveFor (name) {
+	names().forEach(function (other){
+		document.forms[0].classList.remove(other);
+	})
+	document.forms[0].classList.add(name);
+}
+
+//listens for changes in radio buttons
+
+radioButtons().forEach(function (radioButton) {
+	radioButton.addEventListener("change", function(e){
+		solveFor(e.target.value);
+	});
+});
+
+//sets a class for the form
+
+
+
+
