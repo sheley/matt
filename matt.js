@@ -69,4 +69,6 @@ document.getElementById("sampletemperature").addEventListener("change", computeH
 document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
 
 
+//when a radio button is selected, the matching input field should become hidden and the
+//the solution field should be displayed instead
 

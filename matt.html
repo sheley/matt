@@ -1,27 +1,35 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<script src="matt.js"></script>
 	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/style.css">
+	--<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<script>
-		test();
-	</script>
-	<div class="field">
+	<form>
 		<label for="unknown">What do you want to solve for?</label>
 		<input type="radio" name="unknown" value="humidity"/> Humidity
 		<input type="radio" name="unknown" value="sampletemperature"/> Sample Temperature
 		<input type="radio" name="unknown" value="bathtemperature"/> Bath Temperature
-	</div>
-	<div class="field">
+		<br>
 		<label for="humidity"></label>
-		<input type="text" class="input" name="humidity" id="humidity"/>
+		<br>
+		<input type="text" name="humidity" id="humidity"/>
+		<div class="humiditysolution solution">
+		</div>
 		<label for="sampletemperature"></label>
-		<input type="text" class="input" name="sampletemperature" id="sampletemperature"/>
+		<br>
+		<input type="text" name="sampletemperature" id="sampletemperature"/>
+		<div class="sampletemperaturesolution solution">
+		</div>
 		<label for="bathtemperature"></label>
-		<input type="text" class="input" name="bathtemperature" id="bathtemperature"/>
-	</div>
+		<br>
+		<input type="text" name="bathtemperature" id="bathtemperature"/>
+		<div class="bathtemperaturesolution solution">
+		</div>
+	</form>
+	<script src="matt.js"></script>
+	<script>
+		test();
+	</script>
 </body>
 </html>
