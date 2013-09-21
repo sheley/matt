@@ -1,4 +1,4 @@
-//Desired parameters - pick 2 of 3, set desired to 0
+//Desired parameters - pick 2 of 3, get answer for third
 
 var log10 = function (x) {
 	return Math.log(x) / Math.log(10)
