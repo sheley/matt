@@ -49,3 +49,25 @@ test = function () {
 	mustEqual(sampleTemperature(75, 15), 19.5491, "sample temperature test");
 	mustEqual(bathTemperature(82.6, 18), 15, "sample bath temperature test");
 }
+
+
+function inputValueSampleTemp() {
+	return(parseFloat(document.getElementById("sampletemperature").value));
+}
+
+function inputValueBathTemp() {
+	return(parseFloat(document.getElementById("bathtemperature").value));
+}
+
+
+// //adding event listener to know that user has changed (entered) a value into the field
+document.getElementById("sampletemperature").addEventListener("change", function(event) {
+	console.log(humidity(inputValueSampleTemp(), inputValueBathTemp()));
+});
+
+document.getElementById("bathtemperature").addEventListener("change", function(event) {
+	console.log(humidity(inputValueSampleTemp(), inputValueBathTemp()));
+});
+
+
+
