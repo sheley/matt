@@ -18,19 +18,19 @@ CtoK=273.18;
 var humidity = function (sampTemp, bathTemp) {
     	sampTempE=sampTemp+CtoK;
     	bathTempE=bathTemp+CtoK;
-    	return(parseFloat(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant)))).toFixed(2));
+    	return(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant))));
 }
 
 var sampleTemperature = function(relHum, bathTemp) {
     	relHumE=relHum/100;
     	bathTempE=bathTemp+CtoK;
-    	return(parseFloat(-c_ant+b_ant/(b_ant/(bathTempE+c_ant)+(log10(relHumE)))-CtoK).toFixed(2));
+    	return(-c_ant+b_ant/(b_ant/(bathTempE+c_ant)+(log10(relHumE)))-CtoK);
 }
 
 var bathTemperature = function(relHum, sampTemp){
     	relHumE=relHum/100;
     	sampTempE=sampTemp+CtoK;
-    	return(parseFloat(-c_ant+b_ant/(b_ant/(sampTempE+c_ant)-(log10(relHumE))-CtoK).toFixed(2)));
+    	return(-c_ant+b_ant/(b_ant/(sampTempE+c_ant)-(log10(relHumE)))-CtoK);
 }
 
 //test stuff
@@ -45,9 +45,9 @@ var mustEqual = function(a, b, testName) {
 }
 
 test = function () {
-	mustEqual(humidity(25, 10.4694), 40, "humidity test");
-	mustEqual(sampleTemperature(75, 15), 19.5491, "sample temperature test");
-	mustEqual(bathTemperature(82.6, 18), 15, "sample bath temperature test");
+	mustEqual(parseFloat(humidity(25, 10.4694)).toFixed(1), 40, "humidity test");
+	mustEqual(parseFloat(sampleTemperature(75, 15)).toFixed(4), 19.5491, "sample temperature test");
+	mustEqual(parseFloat(bathTemperature(82.6, 18)).toFixed(1), 15, "sample bath temperature test");
 }
 
 //changes the user-inputted values into numbers from strings
@@ -68,17 +68,17 @@ function inputValueBathTemperature() {
 
 function computeHumidity() {
 	document.getElementById('humiditysolution').innerHTML=
-		humidity(inputValueSampleTemperature(), inputValueBathTemperature());
+		parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2);
 }
 
 function computeSampleTemperature() {
 	document.getElementById('sampletemperaturesolution').innerHTML=
-		sampleTemperature(inputValueHumidity(), inputValueBathTemperature());
+		parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2);
 }
 
 function computeBathTemperature() {
 	document.getElementById('bathtemperaturesolution').innerHTML=
-		bathTemperature(inputValueHumidity(), inputValueSampleTemperature());
+		parseFloat(bathTemperature(inputValueHumidity(), inputValueSampleTemperature())).toFixed(2);
 }
 
 // //adding event listener to know that user has changed (entered) a value into the field
@@ -148,12 +148,14 @@ function validateHumidity() {
  	}
  }
 
+//default to have bath temperature selected --- this does not work yet
+
+function displayResult()
+{
+var x=document.getElementById("bathtemperature").defaultChecked;
+alert(x);
+}
 
 
 
-// function computeBathTemperature() {
-// 	document.getElementById('bathtemperaturesolution').innerHTML=
-// 		bathTemperature(inputValueHumidity(), inputValueSampleTemperature());
-// }
-
-
+//°C
