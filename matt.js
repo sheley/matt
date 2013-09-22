@@ -52,7 +52,12 @@ test = function () {
 
 //changes the user-inputted values into numbers from strings
 function inputValueHumidity() {
-	return(parseFloat(document.getElementById("humidity").value));
+	var humidityInput = parseFloat(document.getElementById("humidity").value);
+	if (humidityInput < 1) {
+		alert("*ahem* Make sure you enter humidity in % !");
+	} else {
+		return(humidityInput);
+	}
 }
 
 function inputValueSampleTemperature() {
@@ -72,7 +77,7 @@ function computeHumidity() {
 	var solution = parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2);
 	if (solution != "NaN") {
 	document.getElementById('humiditysolution').innerHTML = solution +" %";	
-	}	
+	}
 }
 
 function computeSampleTemperature() {
@@ -148,14 +153,14 @@ radioButtons().forEach(function (radioButton) {
 });
 
 
-//ask user if humidity entered is in percent --- this does not work yet
-document.getElementById("humidity").onblur ="validateHumidity()"
+// //ask user if humidity entered is in percent --- this does not work yet
+// document.getElementById("humidity").onBlur
 
-function validateHumidity() {
-	if (document.getElementById("humidity").value<1) {
-		alert("*ahem* Make sure you enter humidity in % !");
- 	}
- }
+// function validateHumidity() {
+// 	if (document.getElementById("humidity").value<1) {
+// 		alert("*ahem* Make sure you enter humidity in % !");
+//  	}
+//  }
 
 //default to have bath temperature selected --- this does not work yet!!!! NOTHING WORKS
 

@@ -12,7 +12,7 @@
 		<div id="answer">
 			<input type="radio" name="unknown" value="humidity" class="unknown"/> Humidity<br>
 			<input type="radio" name="unknown" value="sampletemperature" class="unknown"/> Sample Temperature<br>
-			<input type="radio" name="unknown" value="bathtemperature" class="unknown"/> Bath Temperature <br>
+			<input type="radio" name="unknown" value="bathtemperature" class="unknown" checked/> Bath Temperature <br>
 		</div>
 		<div id="data">
 			<label for="humidity"></label>
@@ -28,14 +28,11 @@
 			</div>
 
 			<label for="bathtemperature"></label>
-			<input type="text" name="bathtemperature" id="bathtemperature" placeholder="°C" checked="checked"/>
+			<input type="text" name="bathtemperature" id="bathtemperature" placeholder="°C"/>
 			<div class="solution" id="bathtemperaturesolution">
 				bath temp solution
 			</div>
 		</div>
-
-		<button type="button" onclick="displayResult()">Is "bath temp" checked by default?</button>
-
 			<input type="reset" value="Start Over">
 
 	</form>
