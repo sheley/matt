@@ -139,6 +139,7 @@ function solveFor (name) {
 		document.forms[0].classList.remove(other);
 	})
 	document.forms[0].classList.add(name);
+	solve();
 }
 
 //listens for changes in radio buttons
