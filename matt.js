@@ -72,12 +72,12 @@ function computeHumidity() {
 }
 
 function computeSampleTemperature() {
-	document.getElementById('humiditysolution').innerHTML=
+	document.getElementById('sampletemperaturesolution').innerHTML=
 		sampleTemperature(inputValueHumidity(), inputValueBathTemperature());
 }
 
 function computeBathTemperature() {
-	document.getElementById('humiditysolution').innerHTML=
+	document.getElementById('bathtemperaturesolution').innerHTML=
 		bathTemperature(inputValueHumidity(), inputValueSampleTemperature());
 }
 
