@@ -2,3 +2,15 @@
 .solution {
 	display: none;
 }
+
+.humidity > #humiditysolution {
+	display: inline;
+}
+
+.sampletemperature > #sampletemperaturesolution {
+	display: inline;
+}
+
+.bathtemperature > #bathtemperaturesolution {
+	display: inline;
+}

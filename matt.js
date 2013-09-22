@@ -51,6 +51,10 @@ test = function () {
 }
 
 //changes the user-inputted values into numbers from strings
+function inputValueHumidity() {
+	return(parseFloat(document.getElementById("humidity").value));
+}
+
 function inputValueSampleTemp() {
 	return(parseFloat(document.getElementById("sampletemperature").value));
 }
@@ -59,18 +63,41 @@ function inputValueBathTemp() {
 	return(parseFloat(document.getElementById("bathtemperature").value));
 }
 
+
+
 function computeHumidity() {
 	console.log(humidity(inputValueSampleTemp(), inputValueBathTemp()));
 }
 
+function computeSampleTemp() {
+	console.log(sampleTemp(inputValueHumidity(), inputValueBathTemp()));
+}
+
+function computeBathTemp() {
+	console.log(bathTemp(inputValueHumidity(), inputValueSampleTemp()));
+}
+
 // //adding event listener to know that user has changed (entered) a value into the field
+	//solving for humidity
 document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
 
 document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
 
 
-//when a radio button is selected, the matching input field should become hidden and the
-//the solution field should be displayed instead
+
+	//solving for sample temperature
+// document.getElementById("humidity").addEventListener("change", computeSampleTemp);
+
+// document.getElementById("bathtemperature").addEventListener("change", computeSampleTemp);
+
+
+// 	//soliving for bathtemp
+// document.getElementById("humidity").addEventListener("change", computeBathTemp);
+
+// document.getElementById("sampletemperature").addEventListener("change", computeBathTemp);
+
+
+
 
 //turn nodelist into array so we can use .forEach
 function radioButtons () {
@@ -94,6 +121,11 @@ function solveFor (name) {
 	})
 	document.forms[0].classList.add(name);
 }
+
+//when a radio button is selected, the matching input field should become hidden and the
+//the solution field should be displayed instead
+
+
 
 //listens for changes in radio buttons
 
