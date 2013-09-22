@@ -1,7 +1,7 @@
 //Desired parameters - pick 2 of 3, get answer for third
 
 var log10 = function (x) {
-	return Math.log(x) / Math.log(10)
+	return Math.log(x) / Math.log(10);
 }
 
 
@@ -12,6 +12,8 @@ var c_ant=-31.7;
 
 	//Shift °C to K
 CtoK=273.18;
+
+
 
 var humidity = function (sampTemp, bathTemp) {
     	sampTempE=sampTemp+CtoK;
@@ -31,18 +33,16 @@ var bathTemperature = function(relHum, sampTemp){
     	return((-c_ant+b_ant/((b_ant/(sampTempE+c_ant))-(log10(relHumE))))-CtoK);
 }
 
-
+//test stuff
 
 var mustEqual = function(a, b, testName) {
 	if (a == b) {
-		console.log("okay " + testName)
+		console.log("works: " + testName)
 	} else {
-		console.log("shit " + testName)
+		console.log("doesn't work: " + testName)
 		console.log("  ", a, "doesn't equal", b)
 	}
 }
-
-
 
 test = function () {
 	mustEqual(humidity(25, 10.4694), 40, "humidity test");
@@ -55,46 +55,50 @@ function inputValueHumidity() {
 	return(parseFloat(document.getElementById("humidity").value));
 }
 
-function inputValueSampleTemp() {
+function inputValueSampleTemperature() {
 	return(parseFloat(document.getElementById("sampletemperature").value));
 }
 
-function inputValueBathTemp() {
+function inputValueBathTemperature() {
 	return(parseFloat(document.getElementById("bathtemperature").value));
 }
 
 
+//uses the inputted values to calculate answers and insert them into
 
 function computeHumidity() {
-	console.log(humidity(inputValueSampleTemp(), inputValueBathTemp()));
+	document.getElementById('humiditysolution').innerHTML=
+		humidity(inputValueSampleTemperature(), inputValueBathTemperature());
 }
 
-function computeSampleTemp() {
-	console.log(sampleTemp(inputValueHumidity(), inputValueBathTemp()));
+function computeSampleTemperature() {
+	document.getElementById('humiditysolution').innerHTML=
+		sampleTemperature(inputValueHumidity(), inputValueBathTemperature());
 }
 
-function computeBathTemp() {
-	console.log(bathTemp(inputValueHumidity(), inputValueSampleTemp()));
+function computeBathTemperature() {
+	document.getElementById('humiditysolution').innerHTML=
+		bathTemperature(inputValueHumidity(), inputValueSampleTemperature());
 }
 
 // //adding event listener to know that user has changed (entered) a value into the field
 	//solving for humidity
-document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
+// document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
 
-document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
+// document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
 
 
 
 	//solving for sample temperature
-// document.getElementById("humidity").addEventListener("change", computeSampleTemp);
+document.getElementById("humidity").addEventListener("change", computeSampleTemperature);
 
-// document.getElementById("bathtemperature").addEventListener("change", computeSampleTemp);
+document.getElementById("bathtemperature").addEventListener("change", computeSampleTemperature);
 
 
-// 	//soliving for bathtemp
-// document.getElementById("humidity").addEventListener("change", computeBathTemp);
+	//soliving for bathtemp
+document.getElementById("humidity").addEventListener("change", computeBathTemperature);
 
-// document.getElementById("sampletemperature").addEventListener("change", computeBathTemp);
+document.getElementById("sampletemperature").addEventListener("change", computeBathTemperature);
 
 
 
@@ -125,6 +129,7 @@ function solveFor (name) {
 //when a radio button is selected, the matching input field should become hidden and the
 //the solution field should be displayed instead
 
+		//I did this in css....//
 
 
 //listens for changes in radio buttons
@@ -135,7 +140,23 @@ radioButtons().forEach(function (radioButton) {
 	});
 });
 
-//sets a class for the form
+
+
+//inserts solution to HTML file
+
+document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
+
+document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
+
+// document.getElementById("sampletemperature").addEventListener("change", insertSolution);
+
+// document.getElementById("bathtemperature").addEventListener("change", insertSolution);
+
+
+// function insertSolution () {
+//     document.getElementById('humiditysolution').innerHTML=computeHumidity();
+// }
+
 
 
 

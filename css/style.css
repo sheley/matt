@@ -1,16 +1,14 @@
 
-.solution {
+.solution,
+.humidity > #humidity,
+.bathtemperature > #bathtemperature,
+.sampletemperature > #sampletemperature {
 	display: none;
 }
 
-.humidity > #humiditysolution {
-	display: inline;
-}
-
+.humidity > #humiditysolution, 
+.bathtemperature > #bathtemperaturesolution, 
 .sampletemperature > #sampletemperaturesolution {
 	display: inline;
 }
 
-.bathtemperature > #bathtemperaturesolution {
-	display: inline;
-}
