@@ -67,19 +67,27 @@ function inputValueBathTemperature() {
 //uses the inputted values to calculate answers, round to nearest hundredth 
 //and insert them into the appropriate solution div
 
+
 function computeHumidity() {
-		document.getElementById('humiditysolution').innerHTML=
-		parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2)+" %";		
+	var solution = parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2);
+	if (solution != "NaN") {
+	document.getElementById('humiditysolution').innerHTML = solution +" %";	
+	}	
 }
 
 function computeSampleTemperature() {
-	document.getElementById('sampletemperaturesolution').innerHTML=
-		parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2)+" °C";
+	var solution = parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2);
+	if (solution != "NaN") {
+		document.getElementById('sampletemperaturesolution').innerHTML = solution + " °C";
+	}
 }
 
 function computeBathTemperature() {
+	var solution = parseFloat(bathTemperature(inputValueHumidity(), inputValueSampleTemperature())).toFixed(2);
+	if (solution != "NaN") {
 	document.getElementById('bathtemperaturesolution').innerHTML=
-		parseFloat(bathTemperature(inputValueHumidity(), inputValueSampleTemperature())).toFixed(2)+" °C";
+		solution +" °C";
+	}
 }
 
 //adding event listener to know that user has changed (entered) a value into the field
