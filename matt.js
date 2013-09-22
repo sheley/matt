@@ -95,26 +95,27 @@ function computeBathTemperature() {
 	}
 }
 
+function solvingFor () {
+	return document.forms[0].classList[0];
+}
+
+function solve () {
+	if (solvingFor() == 'humidity') {
+		computeHumidity()
+	} else if (solvingFor() == 'sampletemperature') {
+		computeSampleTemperature()
+	} else if (solvingFor() == 'bathtemperature') {
+		computeBathTemperature()
+	}
+}
+
 //adding event listener to know that user has changed (entered) a value into the field
-	//solving for humidity
-document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
-
-document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
-
-
-
-	//solving for sample temperature
-document.getElementById("humidity").addEventListener("change", computeSampleTemperature);
-
-document.getElementById("bathtemperature").addEventListener("change", computeSampleTemperature);
-
-
-	//soliving for bathtemp
-document.getElementById("humidity").addEventListener("change", computeBathTemperature);
-
-document.getElementById("sampletemperature").addEventListener("change", computeBathTemperature);
-
-
+document.getElementById("sampletemperature").addEventListener("change", solve);
+document.getElementById("sampletemperature").addEventListener("keyup",  solve);
+document.getElementById("bathtemperature").  addEventListener("change", solve);
+document.getElementById("bathtemperature").  addEventListener("keyup", solve);
+document.getElementById("humidity").         addEventListener("change", solve);
+document.getElementById("humidity").         addEventListener("keyup", solve);
 
 
 //turn nodelist into array so we can use .forEach
@@ -133,7 +134,6 @@ function names () {
 //adds the class to form based on radio button selection by removing classes of all
 //and adding back the class of the one selected --we can use this to hide/show
 //input fields based on what we are solving for in CSS
-
 function solveFor (name) {
 	names().forEach(function (other){
 		document.forms[0].classList.remove(other);
@@ -141,11 +141,7 @@ function solveFor (name) {
 	document.forms[0].classList.add(name);
 }
 
-
-
-
 //listens for changes in radio buttons
-
 radioButtons().forEach(function (radioButton) {
 	radioButton.addEventListener("change", function(e){
 		solveFor(e.target.value);
