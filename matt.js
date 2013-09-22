@@ -18,19 +18,20 @@ CtoK=273.18;
 var humidity = function (sampTemp, bathTemp) {
     	sampTempE=sampTemp+CtoK;
     	bathTempE=bathTemp+CtoK;
-    	return(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant))));
+    	return(
+    		parseFloat(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant)))).toFixed(2)));
 }
 
 var sampleTemperature = function(relHum, bathTemp) {
     	relHumE=relHum/100;
     	bathTempE=bathTemp+CtoK;
-    	return(-c_ant+b_ant/((b_ant/(bathTempE+c_ant))+(log10(relHumE)))-CtoK);
+    	return(parseFloat(-c_ant+b_ant/((b_ant/(bathTempE+c_ant))+(log10(relHumE)))-CtoK).toFixed(2)));
 }
 
 var bathTemperature = function(relHum, sampTemp){
     	relHumE=relHum/100;
     	sampTempE=sampTemp+CtoK;
-    	return((-c_ant+b_ant/((b_ant/(sampTempE+c_ant))-(log10(relHumE))))-CtoK);
+    	return(parseFloat(-c_ant+b_ant/((b_ant/(sampTempE+c_ant))-(log10(relHumE))))-CtoK).toFixed(2)));
 }
 
 //test stuff
@@ -64,7 +65,7 @@ function inputValueBathTemperature() {
 }
 
 
-//uses the inputted values to calculate answers and insert them into
+//uses the inputted values to calculate answers and insert them into the appropriate solution div
 
 function computeHumidity() {
 	document.getElementById('humiditysolution').innerHTML=
@@ -83,9 +84,9 @@ function computeBathTemperature() {
 
 // //adding event listener to know that user has changed (entered) a value into the field
 	//solving for humidity
-// document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
+document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
 
-// document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
+document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
 
 
 
@@ -117,7 +118,8 @@ function names () {
 };
 
 //adds the class to form based on radio button selection by removing classes of all
-//and adding back the class of the one selected
+//and adding back the class of the one selected --we can use this to hide/show
+//input fields based on what we are solving for in CSS
 
 function solveFor (name) {
 	names().forEach(function (other){
@@ -126,10 +128,7 @@ function solveFor (name) {
 	document.forms[0].classList.add(name);
 }
 
-//when a radio button is selected, the matching input field should become hidden and the
-//the solution field should be displayed instead
 
-		//I did this in css....//
 
 
 //listens for changes in radio buttons
@@ -141,23 +140,21 @@ radioButtons().forEach(function (radioButton) {
 });
 
 
+//ask user if humidity entered is in percent
+document.getElementById("humidity").onblur ="validateHumidity()"
 
-//inserts solution to HTML file
-
-document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
-
-document.getElementById("bathtemperature").addEventListener("change", computeHumidity);
-
-// document.getElementById("sampletemperature").addEventListener("change", insertSolution);
-
-// document.getElementById("bathtemperature").addEventListener("change", insertSolution);
+function validateHumidity() {
+	if (document.getElementById("humidity").value<1) {
+		alert("*ahem* Make sure you enter humidity in % !");
+ 	}
+ }
 
 
-// function insertSolution () {
-//     document.getElementById('humiditysolution').innerHTML=computeHumidity();
+
+
+// function computeBathTemperature() {
+// 	document.getElementById('bathtemperaturesolution').innerHTML=
+// 		bathTemperature(inputValueHumidity(), inputValueSampleTemperature());
 // }
-
-
-
 
 

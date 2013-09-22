@@ -2,35 +2,39 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="css/normalize.css">
-	--<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<form>
-		<label for="unknown">What do you want to solve for?</label>
-		<input type="radio" name="unknown" value="humidity"/> Humidity
-		<input type="radio" name="unknown" value="sampletemperature"/> Sample Temperature
-		<input type="radio" name="unknown" value="bathtemperature"/> Bath Temperature
-		<br>
+		<div id="question">
+			<label for="unknown">What do you want to solve for?</label><br>
+		</div>
+		<div id="answer">
+			<input type="radio" name="unknown" value="humidity" class="unknown"/> Humidity<br>
+			<input type="radio" name="unknown" value="sampletemperature" class="unknown"/> Sample Temperature<br>
+			<input type="radio" name="unknown" value="bathtemperature" class="unknown"/> Bath Temperature <br>
+		</div>
+		<div id="data">
+			<label for="humidity"></label>
+			<input type="text" name="humidity" id="humidity" placeholder="%"/>
+			<div class="solution" id="humiditysolution">
+				humidity solution
+			</div>
 
-		<label for="humidity"></label>
-		<input type="text" name="humidity" id="humidity"/>
-		<div class="humidity solution" id="humiditysolution">
-			humidity solution
-		</div>
-		<br>
+			<label for="sampletemperature"></label>
+			<input type="text" name="sampletemperature" id="sampletemperature" placeholder="Celsius"/>
+			<div class="solution" id="sampletemperaturesolution">
+				samp temp solution
+			</div>
 
-		<label for="sampletemperature"></label>
-		<input type="text" name="sampletemperature" id="sampletemperature"/>
-		<div class="solution" id="sampletemperaturesolution">
-			samp temp solution
+			<label for="bathtemperature"></label>
+			<input type="text" name="bathtemperature" id="bathtemperature" placeholder="Celsius"/>
+			<div class="solution" id="bathtemperaturesolution">
+				bath temp solution
+			</div>
 		</div>
-		<br>
-		
-		<label for="bathtemperature"></label>
-		<input type="text" name="bathtemperature" id="bathtemperature"/>
-		<div class="solution" id="bathtemperaturesolution">
-			bath temp solution
-		</div>
+			<input type="reset" value="Start Over">
+
 	</form>
 	<script src="matt.js"></script>
 	<script>
