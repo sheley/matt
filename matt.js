@@ -33,7 +33,7 @@ var bathTemperature = function(relHum, sampTemp){
     	return(-c_ant+b_ant/(b_ant/(sampTempE+c_ant)-(log10(relHumE)))-CtoK);
 }
 
-//test stuff
+//tests to see if equations work with example data provided by matt
 
 var mustEqual = function(a, b, testName) {
 	if (a == b) {
@@ -64,24 +64,25 @@ function inputValueBathTemperature() {
 }
 
 
-//uses the inputted values to calculate answers and insert them into the appropriate solution div
+//uses the inputted values to calculate answers, round to nearest hundredth 
+//and insert them into the appropriate solution div
 
 function computeHumidity() {
-	document.getElementById('humiditysolution').innerHTML=
-		parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2);
+		document.getElementById('humiditysolution').innerHTML=
+		parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2)+" %";		
 }
 
 function computeSampleTemperature() {
 	document.getElementById('sampletemperaturesolution').innerHTML=
-		parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2);
+		parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2)+" °C";
 }
 
 function computeBathTemperature() {
 	document.getElementById('bathtemperaturesolution').innerHTML=
-		parseFloat(bathTemperature(inputValueHumidity(), inputValueSampleTemperature())).toFixed(2);
+		parseFloat(bathTemperature(inputValueHumidity(), inputValueSampleTemperature())).toFixed(2)+" °C";
 }
 
-// //adding event listener to know that user has changed (entered) a value into the field
+//adding event listener to know that user has changed (entered) a value into the field
 	//solving for humidity
 document.getElementById("sampletemperature").addEventListener("change", computeHumidity);
 
@@ -148,14 +149,20 @@ function validateHumidity() {
  	}
  }
 
-//default to have bath temperature selected --- this does not work yet
+//default to have bath temperature selected --- this does not work yet!!!! NOTHING WORKS
 
-function displayResult()
-{
-var x=document.getElementById("bathtemperature").defaultChecked;
-alert(x);
-}
+// function check() {
+//   document.getElementById("bathtemperature").checked=true;
+//   }
 
+//  function displayResult()
+// {
+// var x=document.getElementById("bathtemperature").defaultChecked;
+// alert(x);
+// }
+
+// document.getElementById("bathtemperature").checked=true|false
+// document.getElementById("bathtemperature").checked
 
 
 //°C

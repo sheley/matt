@@ -22,17 +22,20 @@
 			</div>
 
 			<label for="sampletemperature"></label>
-			<input type="text" name="sampletemperature" id="sampletemperature" placeholder="Celsius"/>
+			<input type="text" name="sampletemperature" id="sampletemperature" placeholder="°C"/>
 			<div class="solution" id="sampletemperaturesolution">
 				samp temp solution
 			</div>
 
 			<label for="bathtemperature"></label>
-			<input type="text" name="bathtemperature" id="bathtemperature" placeholder="Celsius" checked="checked"/>
+			<input type="text" name="bathtemperature" id="bathtemperature" placeholder="°C" checked="checked"/>
 			<div class="solution" id="bathtemperaturesolution">
 				bath temp solution
 			</div>
 		</div>
+
+		<button type="button" onclick="displayResult()">Is "bath temp" checked by default?</button>
+
 			<input type="reset" value="Start Over">
 
 	</form>
