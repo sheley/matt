@@ -18,20 +18,19 @@ CtoK=273.18;
 var humidity = function (sampTemp, bathTemp) {
     	sampTempE=sampTemp+CtoK;
     	bathTempE=bathTemp+CtoK;
-    	return(
-    		parseFloat(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant)))).toFixed(2)));
+    	return(parseFloat(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant)))).toFixed(2));
 }
 
 var sampleTemperature = function(relHum, bathTemp) {
     	relHumE=relHum/100;
     	bathTempE=bathTemp+CtoK;
-    	return(parseFloat(-c_ant+b_ant/((b_ant/(bathTempE+c_ant))+(log10(relHumE)))-CtoK).toFixed(2)));
+    	return(parseFloat(-c_ant+b_ant/(b_ant/(bathTempE+c_ant)+(log10(relHumE)))-CtoK).toFixed(2));
 }
 
 var bathTemperature = function(relHum, sampTemp){
     	relHumE=relHum/100;
     	sampTempE=sampTemp+CtoK;
-    	return(parseFloat(-c_ant+b_ant/((b_ant/(sampTempE+c_ant))-(log10(relHumE))))-CtoK).toFixed(2)));
+    	return(parseFloat(-c_ant+b_ant/(b_ant/(sampTempE+c_ant)-(log10(relHumE))-CtoK).toFixed(2)));
 }
 
 //test stuff
@@ -140,7 +139,7 @@ radioButtons().forEach(function (radioButton) {
 });
 
 
-//ask user if humidity entered is in percent
+//ask user if humidity entered is in percent --- this does not work yet
 document.getElementById("humidity").onblur ="validateHumidity()"
 
 function validateHumidity() {
