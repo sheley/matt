@@ -113,9 +113,9 @@ function solve () {
 document.getElementById("sampletemperature").addEventListener("change", solve);
 document.getElementById("sampletemperature").addEventListener("keyup",  solve);
 document.getElementById("bathtemperature").  addEventListener("change", solve);
-document.getElementById("bathtemperature").  addEventListener("keyup", solve);
+document.getElementById("bathtemperature").  addEventListener("keyup",  solve);
 document.getElementById("humidity").         addEventListener("change", solve);
-document.getElementById("humidity").         addEventListener("keyup", solve);
+document.getElementById("humidity").         addEventListener("keyup",  solve);
 
 
 //turn nodelist into array so we can use .forEach
