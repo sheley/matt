@@ -5,17 +5,16 @@ body {
 	font-color: #000000;
 }
 
-
 .solution,
-.humidity>#data>#humidity,
-.bathtemperature>#data>#bathtemperature,
-.sampletemperature>#data>#sampletemperature {
+.humidity          #humidity,
+.bathtemperature   #bathtemperature,
+.sampletemperature #sampletemperature {
 	display: none;
 }
 
-.humidity>#data>#humiditysolution, 
-.bathtemperature>#data>#bathtemperaturesolution, 
-.sampletemperature>#data>#sampletemperaturesolution {
+.humidity          #humiditysolution,
+.bathtemperature   #bathtemperaturesolution,
+.sampletemperature #sampletemperaturesolution {
 	display: inline;
 }
 
@@ -50,7 +49,6 @@ input[type="text"] {
 	margin: 0 auto;
 }
 
-
 .solution {
 	width: 100%;
 	height: 25px;
@@ -59,12 +57,3 @@ input[type="text"] {
 .unknown {
 	width: 10%;
 }
-
-
-
-
-
-
-
-
-
