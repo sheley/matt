@@ -50,10 +50,11 @@ test = function () {
 	mustEqual(parseFloat(bathTemperature(82.6, 18)).toFixed(1), 15, "sample bath temperature test");
 }
 
-//changes the user-inputted values into numbers from strings
+//changes the user-inputted values into numbers from strings, also
+//adds alert to user if it appears they inputted humidity in decimal instead of percent
 function inputValueHumidity() {
 	var humidityInput = parseFloat(document.getElementById("humidity").value);
-	if (humidityInput < 1) {
+	if (humidityInput < 1 || humidityInput > 100) {
 		alert("*ahem* Make sure you enter humidity in % !");
 	} else {
 		return(humidityInput);
