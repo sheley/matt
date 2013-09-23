@@ -69,14 +69,15 @@ function inputValueBathTemperature() {
 }
 
 
-//uses the inputted values to calculate answers, round to nearest hundredth 
+//uses the inputted values to calculate answers, round to nearest hundredth
 //and insert them into the appropriate solution div
 
 
 function computeHumidity() {
 	var solution = parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2);
 	if (solution != "NaN") {
-	document.getElementById('humiditysolution').innerHTML = solution +" %";	
+	document.getElementById('humiditysolution').innerHTML = solution +" %";
+	document.getElementById('humidity').value = solution;
 	}
 }
 
@@ -84,6 +85,7 @@ function computeSampleTemperature() {
 	var solution = parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2);
 	if (solution != "NaN") {
 		document.getElementById('sampletemperaturesolution').innerHTML = solution + " °C";
+		document.getElementById('sampletemperature').value = solution;
 	}
 }
 
@@ -92,6 +94,8 @@ function computeBathTemperature() {
 	if (solution != "NaN") {
 	document.getElementById('bathtemperaturesolution').innerHTML=
 		solution +" °C";
+	document.getElementById('bathtemperature').value=
+		solution;
 	}
 }
 
