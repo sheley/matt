@@ -75,9 +75,12 @@ function inputValueBathTemperature() {
 
 
 function computeHumidity() {
+	//add here and then add style + to .innerHTML
+	var style = '<style="color: red;">'
+	var endStyle = '</style>'
 	var solution = parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2);
 	if (solution != "NaN") {
-	document.getElementById('humiditysolution').innerHTML = solution +" %";
+	document.getElementById('humiditysolution').innerHTML = style + solution +" %" + endStyle;
 	document.getElementById('humidity').value = solution;
 	}
 }
@@ -154,30 +157,3 @@ radioButtons().forEach(function (radioButton) {
 	});
 });
 
-
-// //ask user if humidity entered is in percent --- this does not work yet
-// document.getElementById("humidity").onBlur
-
-// function validateHumidity() {
-// 	if (document.getElementById("humidity").value<1) {
-// 		alert("*ahem* Make sure you enter humidity in % !");
-//  	}
-//  }
-
-//default to have bath temperature selected --- this does not work yet!!!! NOTHING WORKS
-
-// function check() {
-//   document.getElementById("bathtemperature").checked=true;
-//   }
-
-//  function displayResult()
-// {
-// var x=document.getElementById("bathtemperature").defaultChecked;
-// alert(x);
-// }
-
-// document.getElementById("bathtemperature").checked=true|false
-// document.getElementById("bathtemperature").checked
-
-
-//°C

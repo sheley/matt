@@ -10,9 +10,9 @@
 			<label for="unknown">What do you want to solve for?</label><br>
 		</div>
 		<div id="answer">
-			<input type="radio" name="unknown" value="humidity" class="unknown"/> Humidity<br>
-			<input type="radio" name="unknown" value="sampletemperature" class="unknown"/> Sample Temperature<br>
-			<input type="radio" name="unknown" value="bathtemperature" class="unknown"/> Bath Temperature <br>
+			<label><input type="radio" name="unknown" value="humidity" class="unknown"/> Humidity (%)<br></label>
+			<label><input type="radio" name="unknown" value="sampletemperature" class="unknown"/> Sample Temperature (°C)<br></label>
+			<label><input type="radio" name="unknown" value="bathtemperature" class="unknown"/> Bath Temperature (°C)<br></label>
 		</div>
 		<div id="data">
 			<label for="humidity"></label>
@@ -22,15 +22,17 @@
 			</div>
 
 			<label for="sampletemperature"></label>
+			<div style="clear:both;"></div>
 			<input type="text" name="sampletemperature" id="sampletemperature" placeholder="°C"/>
 			<div class="solution" id="sampletemperaturesolution">
-				<br><p>waiting for data input</p>
+				<p>waiting for data input</p>
 			</div>
 
 			<label for="bathtemperature"></label>
+			<div style="clear:both;"></div>
 			<input type="text" name="bathtemperature" id="bathtemperature" placeholder="°C"/>
 			<div class="solution" id="bathtemperaturesolution">
-				<br><p>waiting for data input</p>
+				<p>waiting for data input</p>
 			</div>
 		</div>
 	</form>
