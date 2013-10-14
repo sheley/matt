@@ -1,7 +1,7 @@
 body {
-	font-family: courier, serif;
+	font-family: 'Ovo', serif;
 	font-size: 1.5em;
-	color: #000000;
+	color: #666666;
 	/* IE10 Consumer Preview */ 
 	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
 	/* Mozilla Firefox */ 
@@ -32,7 +32,7 @@ body {
 
 
 #question {
-	font-family: courier, serif;
+	font-family: 'Ovo', serif;
 	font-size: 1.2em;
 	color: #000000;
 	height: 25%;
@@ -45,7 +45,7 @@ body {
 
 #answer {
 	font-color: #FFFFFF;
-	font-family: courier, serif;
+	font-family: 'Ovo', serif;
 	color: #000000;
 	height: 100%;
 	text-align: center;
@@ -57,56 +57,34 @@ body {
 	float:left;
 }
 
-#humidity_block {
-	
-}
-
-#sample_temperature_block {
-
-}
-
-
-#bath_temperature_block {
-
-}
-
-
-
 
 input[type="radio"] {
 	margin-bottom: 5%
 }
 
 input[type="text"] {
-	margin: 0% 0% 3% 0%;
+	margin: 0% 0% 5% 0%;
 	text-align: center;
 	width: 33.333%;
 }
 
 .solution {
 	margin: 4% 0% 4% 0%;
-	color: blue;
+	color: #382566;
 }
 
 .solution p {
 	width: 100%;
 	height: 25px;
 	margin: 0%;
-	color: red;
 	padding-top: 0px;
-	font-size: .70em;
+	font-size: .80em;
+	font-family: courier, serif;
 }
 
 .unknown {
 	margin-right: 3%;
 }
 
-label p {
-	font-weight: bold;
-}
 
-@media only screen and (max-width: 500px) {
- body { background-color: #FFF; }
-
-}
 

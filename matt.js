@@ -55,7 +55,8 @@ test = function () {
 function inputValueHumidity() {
 	var humidityInput = parseFloat(document.getElementById("humidity").value);
 	if (humidityInput < 1 || humidityInput > 100) {
-		alert("*ahem* Make sure you enter humidity in % !");
+		alert("Is your humidity entry correct?\n\nBe sure to enter humidity as a percent, NOT in decimal form.\n\nThis window appeared because you entered a number lower than 1 or higher than 100.");
+		return(humidityInput);
 	} else {
 		return(humidityInput);
 	}
@@ -76,11 +77,11 @@ function inputValueBathTemperature() {
 
 function computeHumidity() {
 	//add here and then add style + to .innerHTML
-	var style = '<style="color: red;">'
-	var endStyle = '</style>'
+	// var style = '<style="color: red;">'
+	// var endStyle = '</style>'
 	var solution = parseFloat(humidity(inputValueSampleTemperature(), inputValueBathTemperature())).toFixed(2);
 	if (solution != "NaN") {
-	document.getElementById('humiditysolution').innerHTML = style + solution +" %" + endStyle;
+	document.getElementById('humiditysolution').innerHTML = solution + " %";
 	document.getElementById('humidity').value = solution;
 	}
 }
