@@ -1,9 +1,20 @@
 body {
 	font-family: courier, serif;
-	font-size: 25px;
-	background: #FFFFFF;
+	font-size: 1.5em;
 	color: #000000;
-}
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #9BBACF));
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #9BBACF 100%);
+	}
 
 .solution,
 .humidity          #humidity,
@@ -21,58 +32,81 @@ body {
 
 
 #question {
+	font-family: courier, serif;
+	font-size: 1.2em;
+	color: #000000;
 	height: 25%;
 	width: 100%;
 	margin: 0 auto;
 	padding: 1%;
 	text-align: center;
-	font-size: 30px;
 	font-weight: bold;
 }
 
-#answer, #data {
-	float:left;
-	width: 40%;
-	height:75%;
+#answer {
 	font-color: #FFFFFF;
+	font-family: courier, serif;
+	color: #000000;
+	height: 100%;
+	text-align: center;
 }
 
-#answer{
-	margin-left: 10%;
+.group {
+	height: 50%;
+	width: 33.33333333%;
+	float:left;
 }
 
-#data {
-	margin-right: 10%;
+#humidity_block {
+	
 }
 
-input {
-	width: 100%;
+#sample_temperature_block {
+
 }
+
+
+#bath_temperature_block {
+
+}
+
+
+
 
 input[type="radio"] {
-	margin: 6% 0% 6% 0%;
+	margin-bottom: 5%
 }
 
 input[type="text"] {
-	margin: 3% 0% 3% 0%;
-	width: 60%;
+	margin: 0% 0% 3% 0%;
+	text-align: center;
+	width: 33.333%;
 }
 
 .solution {
-	width: 100%;
-	height: 25px;
-	margin: 3% 0% 3% 0%;
-	color: #240FFF;
-	font-size: 30px;
+	margin: 4% 0% 4% 0%;
+	color: blue;
 }
 
 .solution p {
 	width: 100%;
 	height: 25px;
-	margin: 4% 0% 4% 0%;
+	margin: 0%;
+	color: red;
+	padding-top: 0px;
+	font-size: .70em;
 }
 
 .unknown {
-	width: 10%;
+	margin-right: 3%;
+}
+
+label p {
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 500px) {
+ body { background-color: #FFF; }
+
 }
 
