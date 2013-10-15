@@ -1,0 +1,90 @@
+body {
+	font-family: 'Ovo', serif;
+	font-size: 1.5em;
+	color: #666666;
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #9BBACF));
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #9BBACF 100%);
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #9BBACF 100%);
+	}
+
+.solution,
+.humidity          #humidity,
+.bathtemperature   #bathtemperature,
+.sampletemperature #sampletemperature {
+	display: none;
+}
+
+
+.humidity          #humiditysolution,
+.bathtemperature   #bathtemperaturesolution,
+.sampletemperature #sampletemperaturesolution {
+	display: inline;
+}
+
+
+#question {
+	font-family: 'Ovo', serif;
+	font-size: 1.2em;
+	color: #000000;
+	height: 25%;
+	width: 100%;
+	margin: 0 auto;
+	padding: 1%;
+	text-align: center;
+	font-weight: bold;
+}
+
+#answer {
+	font-color: #FFFFFF;
+	font-family: 'Ovo', serif;
+	color: #000000;
+	height: 100%;
+	text-align: center;
+}
+
+.group {
+	height: 50%;
+	width: 33.33333333%;
+	float:left;
+}
+
+
+input[type="radio"] {
+	margin-bottom: 5%
+}
+
+input[type="text"] {
+	margin: 0% 0% 5% 0%;
+	text-align: center;
+	width: 33.333%;
+}
+
+.solution {
+	margin: 4% 0% 4% 0%;
+	color: #382566;
+}
+
+.solution p {
+	width: 100%;
+	height: 25px;
+	margin: 0%;
+	padding-top: 0px;
+	font-size: .80em;
+	font-family: courier, serif;
+}
+
+.unknown {
+	margin-right: 3%;
+}
+
+
+
