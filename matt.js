@@ -16,21 +16,21 @@ CtoK=273.18;
 
 
 var humidity = function (sampTemp, bathTemp) {
-    	sampTempE=sampTemp+CtoK;
-    	bathTempE=bathTemp+CtoK;
+    	sampTempE=sampTemp;
+    	bathTempE=bathTemp;
     	return(100 * Math.pow(10, (-b_ant/(bathTempE+c_ant)+b_ant/(sampTempE+c_ant))));
 }
 
 var sampleTemperature = function(relHum, bathTemp) {
     	relHumE=relHum/100;
-    	bathTempE=bathTemp+CtoK;
-    	return(-c_ant+b_ant/(b_ant/(bathTempE+c_ant)+(log10(relHumE)))-CtoK);
+    	bathTempE=bathTemp;
+    	return(-c_ant+b_ant/(b_ant/(bathTempE+c_ant)+(log10(relHumE))));
 }
 
 var bathTemperature = function(relHum, sampTemp){
     	relHumE=relHum/100;
-    	sampTempE=sampTemp+CtoK;
-    	return(-c_ant+b_ant/(b_ant/(sampTempE+c_ant)-(log10(relHumE)))-CtoK);
+    	sampTempE=sampTemp;
+    	return(-c_ant+b_ant/(b_ant/(sampTempE+c_ant)-(log10(relHumE))));
 }
 
 //tests to see if equations work with example data provided by matt
@@ -45,9 +45,9 @@ var mustEqual = function(a, b, testName) {
 }
 
 test = function () {
-	mustEqual(parseFloat(humidity(25, 10.4694)).toFixed(1), 40, "humidity test");
-	mustEqual(parseFloat(sampleTemperature(75, 15)).toFixed(4), 19.5491, "sample temperature test");
-	mustEqual(parseFloat(bathTemperature(82.6, 18)).toFixed(1), 15, "sample bath temperature test");
+	mustEqual(parseFloat(humidity(298.18, 283.65)).toFixed(1), 40, "humidity test");
+	mustEqual(parseFloat(sampleTemperature(75, 288.18)).toFixed(2), 292.73, "sample temperature test");
+	mustEqual(parseFloat(bathTemperature(82.6, 291.18)).toFixed(2), 288.18, "sample bath temperature test");
 }
 
 //changes the user-inputted values into numbers from strings, also
