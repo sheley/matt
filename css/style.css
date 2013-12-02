@@ -2,31 +2,31 @@ body {
 	font-family: 'Ovo', serif;
 	font-size: 1.5em;
 	color: #666666;
-	/* IE10 Consumer Preview */ 
+	/* IE10 Consumer Preview */
 	background-image: -ms-linear-gradient(top, #FFFFFF 0%, pink 100%);
-	/* Mozilla Firefox */ 
+	/* Mozilla Firefox */
 	background-image: -moz-linear-gradient(top, #FFFFFF 0%, pink 100%);
-	/* Opera */ 
+	/* Opera */
 	background-image: -o-linear-gradient(top, #FFFFFF 0%, pink 100%);
-	/* Webkit (Safari/Chrome 10) */ 
+	/* Webkit (Safari/Chrome 10) */
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, pink));
-	/* Webkit (Chrome 11+) */ 
+	/* Webkit (Chrome 11+) */
 	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, pink 100%);
-	/* W3C Markup, IE10 Release Preview */ 
+	/* W3C Markup, IE10 Release Preview */
 	background-image: linear-gradient(to bottom, #FFFFFF 0%, pink 100%);
 	}
 
 .solution,
 .humidity          #humidity,
-.bathtemperature   #bathtemperature,
-.sampletemperature #sampletemperature {
+.bathtemperature   input.bathtemperature,
+.sampletemperature input.sampletemperature {
 	display: none;
 }
 
 
 .humidity          #humiditysolution,
-.bathtemperature   #bathtemperaturesolution,
-.sampletemperature #sampletemperaturesolution {
+.bathtemperature   .bathtemperaturesolution,
+.sampletemperature .sampletemperaturesolution {
 	display: inline;
 }
 

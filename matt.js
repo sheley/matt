@@ -1,9 +1,6 @@
-//Desired parameters - pick 2 of 3, get answer for third
-
 var log10 = function (x) {
 	return Math.log(x) / Math.log(10);
 }
-
 
 	//Antoine Coefficients
 var a_ant=5.402;
@@ -14,101 +11,43 @@ var c_ant=-31.7;
 CtoK=273.18;
 
 
-//solve for humidity with entered C
-//Changed
-//	humidity  --> humidityC
-//	sampTemp  --> sampeTempC
-//	bathTemp  --> bathTempC
-//	bathTempE --> bathTempK
-//	sampTempE --> sampTempK
+	//solve for humidity
 var humidityC = function (sampTempC, bathTempC) {
-	//changed sampTempE and bathTempE --> K
     	sampTempK=sampTempC+CtoK;
     	bathTempK=bathTempC+CtoK;
     	return(100 * Math.pow(10, (-b_ant/(bathTempK+c_ant)+b_ant/(sampTempK+c_ant))));
 }
 
-//solve for humidity with entered K numbers
-//	humidity  --> humidityK
 var humidityK = function (sampTempK, bathTempK) {
    	return(100 * Math.pow(10, (-b_ant/(bathTempK+c_ant)+b_ant/(sampTempK+c_ant))));
 }
 
-
-
-
-//solve for samp temp with entered C
-//Changed
-//	sampleTemperature --> sampleTemperatureC
-//	bathTemp --> bathTempC
-//	bathTempE --> bathTempK
+	//solve for samp temp
 var sampleTemperatureC = function(relHum, bathTempC) {
     	relHumE=relHum/100;
     	bathTempK=bathTempC+CtoK;
     	return(-c_ant+b_ant/(b_ant/(bathTempK+c_ant)+(log10(relHumE)))-CtoK);
 }
 
-//solve for samp temp with entered K
-//	sampleTemperature --> sampleTemperatureK
 var sampleTemperatureK = function(relHum, bathTempK) {
     	relHumE=relHum/100;
     	return(-c_ant+b_ant/(b_ant/(bathTempK+c_ant)+(log10(relHumE))));
 }
 
-
-
-//solve for bath temp with entered C
-//Changed
-//	bathTemperature --> bathTemperatureC
-//	sampTemp --> sampTempC
-//	sampTempE --> sampTempK
+	//solve for bath temp
 var bathTemperatureC = function(relHum, sampTempC){
     	relHumE=relHum/100;
     	sampTempK=sampTempC+CtoK;
     	return(-c_ant+b_ant/(b_ant/(sampTempK+c_ant)-(log10(relHumE)))-CtoK);
 }
 
-//solve for bath temp with entered K
-//Changed
-//	bathTemperature --> bathTemperatureK
-//	sampTemp  --> sampTempK
-//	sampTempE --> sampTempK
 var bathTemperatureK = function(relHum, sampTempK){
     	relHumE=relHum/100;
     	return(-c_ant+b_ant/(b_ant/(sampTempK+c_ant)-(log10(relHumE))));
 }
 
-
-
-//tests to see if equations work with example data provided by matt
-
-var mustEqual = function(a, b, testName) {
-	if (a == b) {
-		console.log("works: " + testName)
-	} else {
-		console.log("doesn't work: " + testName)
-		console.log("  ", a, "doesn't equal", b)
-	}
-}
-
-
-//added C to name of tests
-//added K to name of tests
-
-test = function () {
-	mustEqual(parseFloat(humidityC(25, 10.4694)).toFixed(1), 40, "humidity test C");
-	mustEqual(parseFloat(sampleTemperatureC(75, 15)).toFixed(4), 19.5491, "sample temperature test C");
-	mustEqual(parseFloat(bathTemperatureC(82.6, 18)).toFixed(1), 15, "sample bath temperature test C");
-	mustEqual(parseFloat(humidityK(298.18, 283.65)).toFixed(1), 40, "humidity test K");
-	mustEqual(parseFloat(sampleTemperatureK(75, 288.18)).toFixed(2), 292.73, "sample temperature test K");
-	mustEqual(parseFloat(bathTemperatureK(82.6, 291.18)).toFixed(2), 288.18, "sample bath temperature test K");
-}
-
-
-
-
-//changes the user-inputted values into numbers from strings, also
-//adds alert to user if it appears they inputted humidity in decimal instead of percent
+//changes the user-inputted values into numbers from strings
+//alerts if it appears inputted humidity is in decimal rather than percent
 function inputValueHumidity() {
 	var humidityInput = parseFloat(document.getElementById("humidity").value);
 	if (humidityInput < 1 || humidityInput > 100) {
@@ -119,43 +58,26 @@ function inputValueHumidity() {
 	}
 }
 
-//inputValueSampleTemperature --> inputValueSampleTemperatureC
-//sampletemperature --> sampletemperatureC
 function inputValueSampleTemperatureC() {
 	return(parseFloat(document.getElementById("sampletemperatureC").value));
 }
 
-//inputValueSampleTemperature --> inputValueSampleTemperatureK
-//sampletemperature --> sampletemperatureK
 function inputValueSampleTemperatureK() {
 	return(parseFloat(document.getElementById("sampletemperatureK").value));
 }
 
 
-//inputValueBathTemperature --> inputValueBathTemperatureC
-//bathtemperature --> bathtemperatureC
 function inputValueBathTemperatureC() {
 	return(parseFloat(document.getElementById("bathtemperatureC").value));
 }
 
-//inputValueBathTemperature --> inputValueBathTemperatureK
-//bathtemperature --> bathtemperatureK
 function inputValueBathTemperatureK() {
 	return(parseFloat(document.getElementById("bathtemperatureK").value));
 }
 
-
 //uses the inputted values to calculate answers, round to nearest hundredth
 //and insert them into the appropriate solution div
-
-//changed
-//computeHumidity --> computeHumidityC
-//inputValueSampleTemperature --> inputValueSampleTemperatureC
-//inputValueBathTemperature --> inputValueBathTemperatureC
 function computeHumidityC() {
-	//add here and then add style + to .innerHTML
-	// var style = '<style="color: red;">'
-	// var endStyle = '</style>'
 	var solution = parseFloat(humidityC(inputValueSampleTemperatureC(), inputValueBathTemperatureC())).toFixed(2);
 	if (solution != "NaN") {
 	document.getElementById('humiditysolution').innerHTML = solution + " %";
@@ -163,15 +85,7 @@ function computeHumidityC() {
 	}
 }
 
-
-//changed
-//computeHumidity --> computeHumidityK
-//inputValueSampleTemperature --> inputValueSampleTemperatureK
-//inputValueBathTemperature --> inputValueBathTemperatureK
 function computeHumidityK() {
-	//add here and then add style + to .innerHTML
-	// var style = '<style="color: red;">'
-	// var endStyle = '</style>'
 	var solution = parseFloat(humidityK(inputValueSampleTemperatureK(), inputValueBathTemperatureK())).toFixed(2);
 	if (solution != "NaN") {
 	document.getElementById('humiditysolution').innerHTML = solution + " %";
@@ -179,15 +93,6 @@ function computeHumidityK() {
 	}
 }
 
-
-
-
-//changed
-//computeSampleTemperature --> computeSampleTemperatureC
-//sampleTemperature --> sampleTemperatureC
-//inputValueBathTemperature --> inputValueBathTemperatureC
-//sampletemperaturesolution --> sampletemperaturesolutionC
-//sampletemperature --> sampletemperatureC
 function computeSampleTemperatureC() {
 	var solution = parseFloat(sampleTemperatureC(inputValueHumidity(), inputValueBathTemperatureC())).toFixed(2);
 	if (solution != "NaN") {
@@ -196,79 +101,49 @@ function computeSampleTemperatureC() {
 	}
 }
 
-
-//changed
-//computeSampleTemperature --> computeSampleTemperatureK
-//sampleTemperature --> sampleTemperatureK
-//inputValueBathTemperature --> inputValueBathTemperatureK
-//sampletemperaturesolution --> sampletemperaturesolutionK
-//sampletemperature --> sampletemperatureK
 function computeSampleTemperatureK() {
 	var solution = parseFloat(sampleTemperatureK(inputValueHumidity(), inputValueBathTemperatureK())).toFixed(2);
 	if (solution != "NaN") {
-		document.getElementById('sampletemperaturesolutionK').innerHTML = solution + " °C";
+		document.getElementById('sampletemperaturesolutionK').innerHTML = solution + " K";
 		document.getElementById('sampletemperatureK').value = solution;
 	}
 }
 
-
-//changed
-//computeBathTemperature --> computeBathTemperatureC
-//bathTemperature --> bathTemperatureC
-//inputValueSampleTemperature --> inputValueSampleTemperatureC
-//bathtemperaturesolution --> bathtemperaturesolutionC
-//bathtemperature --> bathtemperatureC
 function computeBathTemperatureC() {
 	var solution = parseFloat(bathTemperatureC(inputValueHumidity(), inputValueSampleTemperatureC())).toFixed(2);
 	if (solution != "NaN") {
-	document.getElementById('bathtemperaturesolutionC').innerHTML=
-		solution +" °C";
-	document.getElementById('bathtemperatureC').value=
-		solution;
+	document.getElementById('bathtemperaturesolutionC').innerHTML = solution +" °C";
+	document.getElementById('bathtemperatureC').value = solution;
 	}
 }
 
-
-//changed
-//computeBathTemperature --> computeBathTemperatureK
-//bathTemperature --> bathTemperatureK
-//inputValueSampleTemperature --> inputValueSampleTemperatureK
-//bathtemperaturesolution --> bathtemperaturesolutionK
-//bathtemperature --> bathtemperatureK
 function computeBathTemperatureK() {
 	var solution = parseFloat(bathTemperatureK(inputValueHumidity(), inputValueSampleTemperatureK())).toFixed(2);
 	if (solution != "NaN") {
-	document.getElementById('bathtemperaturesolutionK').innerHTML=
-		solution +" °C";
-	document.getElementById('bathtemperatureK').value=
-		solution;
+	document.getElementById('bathtemperaturesolutionK').innerHTML = solution +" K";
+	document.getElementById('bathtemperatureK').value = solution;
 	}
 }
-
 
 function solvingFor () {
 	return document.forms[0].classList[0];
 }
 
-
-
 //added C and K versions of compute calls.
-//i should be able to leave the class names the same
 function solve () {
 	if (solvingFor() == 'humidity') {
-		computeHumidityC()
-		computeHumidityK()
+		computeHumidityC();
+		computeHumidityK();
 	} else if (solvingFor() == 'sampletemperature') {
 		computeSampleTemperatureC();
-		computeSampleTemperatureK()
+		computeSampleTemperatureK();
 	} else if (solvingFor() == 'bathtemperature') {
-		computeBathTemperatureC()
-		computeBathTemperatureK()
+		computeBathTemperatureC();
+		computeBathTemperatureK();
 	}
 }
 
-//added C and K event listeners
-//adding event listener to know that user has changed (entered) a value into the field
+// adding event listener to know that user has entered or changed a value into the field
 document.getElementById("sampletemperatureC").addEventListener("change", solve);
 document.getElementById("sampletemperatureC").addEventListener("keyup",  solve);
 document.getElementById("bathtemperatureC").  addEventListener("change", solve);
@@ -314,4 +189,64 @@ radioButtons().forEach(function (radioButton) {
 		solveFor(e.target.value);
 	});
 });
+
+
+//convert c to k
+var cToK = function(celsiusField) {
+	return celsiusField + 273.18;
+}
+
+//convert k to c
+var kToC = function(kelvinField) {
+	return kelvinField - 273.18;
+}
+
+var setSampleTemperatureK = function() {
+	document.getElementById("sampletemperatureK").value = cToK(document.getElementById("sampletemperatureC").value;
+
+}
+
+var setSampleTemperatureC = function() {
+	document.getElementById("sampletemperatureC").value = kToC(document.getElementById("sampletemperatureK").value;
+}
+
+var setSampleTemperatureK = function() {
+
+}
+
+var setSampleTemperatureC = function() {
+
+}
+
+// document.getElementById("sampletemperatureC").addEventListener("change", (document.getElementById("sampletemperatureK").value = cToK(document.getElementById("sampletemperatureC").value)));
+// document.getElementById("sampletemperatureC").addEventListener("keyup",  (document.getElementById("sampletemperatureK").value = cToK(document.getElementById("sampletemperatureC").value)));
+
+// document.getElementById("bathtemperatureC").  addEventListener("change", (document.getElementById("bathtemperatureK").value = cToK(document.getElementById("bathtemperatureC").value)));
+// document.getElementById("bathtemperatureC").  addEventListener("keyup",  (document.getElementById("bathtemperatureK").value = cToK(document.getElementById("bathtemperatureC").value)));
+
+// document.getElementById("sampletemperatureK").addEventListener("change", (document.getElementById("sampletemperatureC").value = kToC(document.getElementById("sampletemperatureK").value)));
+// document.getElementById("sampletemperatureK").addEventListener("keyup",  (document.getElementById("sampletemperatureC").value = kToC(document.getElementById("sampletemperatureK").value)));
+
+// document.getElementById("bathtemperatureK").  addEventListener("change", (document.getElementById("bathtemperatureC").value = kToC(document.getElementById("bathtemperatureK").value)));
+// document.getElementById("bathtemperatureK").  addEventListener("keyup",  (document.getElementById("bathtemperatureC").value = kToC(document.getElementById("bathtemperatureK").value)));
+
+
+
+var mustEqual = function(a, b, testName) {
+	if (a == b) {
+		console.log("works: " + testName)
+	} else {
+		console.log("doesn't work: " + testName)
+		console.log("  ", a, "doesn't equal", b)
+	}
+}
+
+test = function () {
+	mustEqual(parseFloat(humidityC(25, 10.4694)).toFixed(1), 40, "humidity test C");
+	mustEqual(parseFloat(sampleTemperatureC(75, 15)).toFixed(4), 19.5491, "sample temperature test C");
+	mustEqual(parseFloat(bathTemperatureC(82.6, 18)).toFixed(1), 15, "sample bath temperature test C");
+	mustEqual(parseFloat(humidityK(298.18, 283.65)).toFixed(1), 40, "humidity test K");
+	mustEqual(parseFloat(sampleTemperatureK(75, 288.18)).toFixed(2), 292.73, "sample temperature test K");
+	mustEqual(parseFloat(bathTemperatureK(82.6, 291.18)).toFixed(2), 288.18, "sample bath temperature test K");
+}
 
