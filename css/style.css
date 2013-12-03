@@ -16,22 +16,8 @@ body {
 	background-image: linear-gradient(to bottom, #FFFFFF 0%, pink 100%);
 	}
 
-.solution,
-.humidity          #humidity,
-.bathtemperature   input.bathtemperature,
-.sampletemperature input.sampletemperature {
-	display: none;
-}
 
-
-.humidity          #humiditysolution,
-.bathtemperature   .bathtemperaturesolution,
-.sampletemperature .sampletemperaturesolution {
-	display: inline;
-}
-
-
-#question {
+h1 {
 	font-family: 'Ovo', serif;
 	font-size: 1.2em;
 	color: #000000;
@@ -58,33 +44,12 @@ body {
 }
 
 
-input[type="radio"] {
-	margin-bottom: 5%
-}
-
 input[type="text"] {
 	margin: 0% 0% 5% 0%;
 	text-align: center;
 	width: 33.333%;
 }
 
-.solution {
-	margin: 4% 0% 4% 0%;
-	color: #382566;
-}
-
-.solution p {
-	width: 100%;
-	height: 25px;
-	margin: 0%;
-	padding-top: 0px;
-	font-size: .80em;
-	font-family: courier, serif;
-}
-
 .unknown {
 	margin-right: 3%;
 }
-
-
-

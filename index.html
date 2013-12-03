@@ -6,64 +6,29 @@
 	<link href='http://fonts.googleapis.com/css?family=Ovo' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	<h1>Enter in your known data please.</h1>
 	<form>
-		<div id="question">
-			<label for="unknown">What are you solving for?</label><br>
-		</div>
 		<div id="answer">
-
 			<div class="group" id="humidity_block">
-				<label><input type="radio" name="unknown" value="humidity" class="unknown"/>Humidity<br></label>
 				<label for="humidity"></label>
 				<input type="text" name="humidity" id="humidity" placeholder="%"/>
-				<div class="solution" id="humiditysolution">
-				</div>
 			</div>
-
-
-
-
 
 			<div class="group" id="sample_temperature_block">
-				<label><input type="radio" name="unknown" value="sampletemperature" class="unknown"/>Sample Temp<br></label>
+				<div style="clear:both;"></div>
+				<input class="sampletemperature" type="text" name="sampletemperatureC" id="sampletemperatureC" data-unit="celsius" placeholder="C"/>
 
 				<div style="clear:both;"></div>
-				<input class="sampletemperature" type="text" name="sampletemperatureC" id="sampletemperatureC" placeholder="C"/>
-				<div class="solution sampletemperaturesolution" id="sampletemperaturesolutionC">
-				</div>
-
-
-				<div style="clear:both;"></div>
-				<input class="sampletemperature" type="text" name="sampletemperatureK" id="sampletemperatureK" placeholder="K"/>
-				<div class="solution sampletemperaturesolution" id="sampletemperaturesolutionK">
-				</div>
-
-
+				<input class="sampletemperature" type="text" name="sampletemperatureK" id="sampletemperatureK" data-unit="kelvin" placeholder="K"/>
 			</div>
-
-
-
 
 			<div class="group" id="bath_temperature_block">
-				<label><input type="radio" name="unknown" value="bathtemperature" class="unknown"/>Bath Temp<br></label>
+				<div style="clear:both;"></div>
+				<input class="bathtemperature" type="text" name="bathtemperatureC" id="bathtemperatureC" data-unit-"celsius" placeholder="C"/>
 
 				<div style="clear:both;"></div>
-				<input class="bathtemperature" type="text" name="bathtemperatureC" id="bathtemperatureC" placeholder="C"/>
-				<div class="solution bathtemperaturesolution" id="bathtemperaturesolutionC">
-				</div>
-
-				<div style="clear:both;"></div>
-				<input class="bathtemperature" type="text" name="bathtemperatureK" id="bathtemperatureK" placeholder="K"/>
-				<div class="solution bathtemperaturesolution" id="bathtemperaturesolutionK">
-				</div>
+				<input class="bathtemperature" type="text" name="bathtemperatureK" data-unit="kelvin" id="bathtemperatureK" placeholder="K"/>
 			</div>
-
-
-
-
-
-
-
 		</div>
 	</form>
 	<script src="matt.js"></script>
