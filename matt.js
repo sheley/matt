@@ -140,25 +140,29 @@ function computeBathTemperature() {
 	}
 }
 
-
-
+var updateAndSolve = function(currentField) {
+	var id_string = String(currentField.id)
+	if (id_string.Contains("K") == true) {
+		document.getElementById(id_string.replace('K', '')).value = currentField.value - CtoK;
+	} else {
+		document.getElementById(id_string + "K").value = currentField.value + CtoK;
+	};
+	solve;
+}
 
 
 
 //adding event listener to know that user has changed (entered) a value into the field
-document.getElementById("sampletemperature").addEventListener("change", solve);
-document.getElementById("sampletemperature").addEventListener("keyup",  solve);
-document.getElementById("bathtemperature").  addEventListener("change", solve);
-document.getElementById("bathtemperature").  addEventListener("keyup",  solve);
+document.getElementById("sampletemperature").addEventListener("change", updateAndSolve(document.getElementById("sampletemperature")));
+document.getElementById("sampletemperature").addEventListener("keyup",  updateAndSolve(document.getElementById("sampletemperature")));
+document.getElementById("bathtemperature").  addEventListener("change", updateAndSolve(document.getElementById("bathtemperature")));
+document.getElementById("bathtemperature").  addEventListener("keyup",  updateAndSolve(document.getElementById("bathtemperature")));
 document.getElementById("humidity").         addEventListener("change", solve);
 document.getElementById("humidity").         addEventListener("keyup",  solve);
-document.getElementById("sampletemperatureK").addEventListener("change", solve);
-document.getElementById("sampletemperatureK").addEventListener("keyup",  solve);
-document.getElementById("bathtemperatureK").  addEventListener("change", solve);
-document.getElementById("bathtemperatureK").  addEventListener("keyup",  solve);
-
-
-
+document.getElementById("sampletemperatureK").addEventListener("change", updateAndSolve(document.getElementById("sampletemperatureK")));
+document.getElementById("sampletemperatureK").addEventListener("keyup",  updateAndSolve(document.getElementById("sampletemperatureK")));
+document.getElementById("bathtemperatureK").  addEventListener("change", updateAndSolve(document.getElementById("bathtemperatureK")));
+document.getElementById("bathtemperatureK").  addEventListener("keyup",  updateAndSolve(document.getElementById("bathtemperatureK")));
 
 //tests to see if equations work with example data provided by matt
 
