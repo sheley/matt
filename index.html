@@ -22,18 +22,29 @@
 				<label><input type="radio" name="unknown" value="sampletemperature" class="unknown"/>Sample Temp<br></label>
 				<label for="sampletemperature"></label>
 				<div style="clear:both;"></div>
+			<!--celsius-->
 				<input type="text" name="sampletemperature" id="sampletemperature" data-unit="celsius" placeholder="°C"/>
 				<div class="solution" id="sampletemperaturesolution">
+				</div>
+			<!--kelvin-->
+				<div style="clear:both;"></div>
+				<input class="sampletemperature" type="text" name="sampletemperatureK" id="sampletemperatureK" data-unit="kelvin" placeholder="K"/>
+				<div class="solution" id="sampletemperaturesolutionK">
 				</div>
 			</div>
 			<div class="group" id="bath_temperature_block">
 				<label><input type="radio" name="unknown" value="bathtemperature" class="unknown"/>Bath Temp<br></label>
 				<label for="bathtemperature"></label>
+			<!--celsius-->
 				<input type="text" name="bathtemperature" id="bathtemperature" data-unit="celsius" placeholder="°C"/>
 				<div class="solution" id="bathtemperaturesolution">
 				</div>
+			<!--kelvin-->
+				<div style="clear:both;"></div>
+				<input class="bathtemperature" type="text" name="bathtemperatureK" id="bathtemperatureK" data-unit="kelvin" placeholder="K"/>
+				<div class="solution" id="bathtemperaturesolutionK">
+ 				</div>
 			</div>
-
 		</div>
 	</form>
 	<script src="matt.js"></script>

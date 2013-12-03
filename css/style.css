@@ -19,14 +19,18 @@ body {
 .solution,
 .humidity          #humidity,
 .bathtemperature   #bathtemperature,
-.sampletemperature #sampletemperature {
+.bathtemperature   #bathtemperatureK,
+.sampletemperature #sampletemperature,
+.sampletemperature #sampletemperatureK {
 	display: none;
 }
 
 
 .humidity          #humiditysolution,
 .bathtemperature   #bathtemperaturesolution,
-.sampletemperature #sampletemperaturesolution {
+.bathtemperature   #bathtemperaturesolutionK,
+.sampletemperature #sampletemperaturesolution,
+.sampletemperature #sampletemperaturesolutionK {
 	display: inline;
 }
 
@@ -56,7 +60,6 @@ body {
 	width: 33.33333333%;
 	float:left;
 }
-
 
 input[type="radio"] {
 	margin-bottom: 5%
