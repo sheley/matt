@@ -142,7 +142,7 @@ function computeBathTemperature() {
 
 var updateAndSolve = function(currentField) {
 	var id_string = String(currentField.id)
-	if (id_string.Contains("K") == true) {
+	if (id_string.indexOf("K") !== -1) {
 		document.getElementById(id_string.replace('K', '')).value = currentField.value - CtoK;
 	} else {
 		document.getElementById(id_string + "K").value = currentField.value + CtoK;
