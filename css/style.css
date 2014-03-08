@@ -18,18 +18,18 @@ body {
 
 .solution,
 .humidity          #humidity,
-.bathtemperature   #bathtemperature,
+.bathtemperature   #bathtemperatureC,
 .bathtemperature   #bathtemperatureK,
-.sampletemperature #sampletemperature,
+.sampletemperature #sampletemperatureC,
 .sampletemperature #sampletemperatureK {
 	display: none;
 }
 
 
 .humidity          #humiditysolution,
-.bathtemperature   #bathtemperaturesolution,
+.bathtemperature   #bathtemperaturesolutionC,
 .bathtemperature   #bathtemperaturesolutionK,
-.sampletemperature #sampletemperaturesolution,
+.sampletemperature #sampletemperaturesolutionC,
 .sampletemperature #sampletemperaturesolutionK {
 	display: inline;
 }
