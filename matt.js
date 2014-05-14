@@ -70,11 +70,11 @@ function inputValueHumidity() {
 	}
 }
 
-function inputValueSampleTemperature() {
+function inputValueSampleTemperatureC() {
 	return(parseFloat(document.getElementById("sampletemperature").value));
 }
 
-function inputValueBathTemperature() {
+function inputValueBathTemperatureC() {
 	return(parseFloat(document.getElementById("bathtemperature").value));
 }
 
@@ -86,6 +86,72 @@ function inputValueBathTemperatureK() {
 	return(parseFloat(document.getElementById("bathtemperatureK").value));
 }
 
+
+
+//uses the inputted values to calculate answers, round to nearest hundredth
+//and insert them into the appropriate solution div
+
+State = {
+    bathTempC:   null,
+    bathTempK:   null,
+    sampleTempC: null,
+    sampleTempK: null,
+    humidity:    null
+}
+
+function cloneState (state) {
+    return {
+        bathTempC:   state.bathTempC,
+        bathTempK:   state.bathTempK,
+        sampleTempC: state.sampleTempC,
+        sampleTempK: state.sampleTempK,
+        humidity:    state.humidity
+    }
+}
+
+function CtoK (c) {
+	k = c + 273.18;
+    return k;
+}
+
+function KtoC (k) {
+	c = k - 273.18;
+    return c;
+}
+
+function change (state, field, value, target) {
+    var newState = cloneState(state);
+
+    if (field == "sampleTempC") {
+        newState.sampleTempC = value;
+        newState.sampleTempK = CtoK(value);
+    }
+    if (field == "sampleTempK") {
+        newState.sampleTempK = value;
+        newState.sampleTempC = KtoC(value);
+    }
+    if (field == "bathTempC") {
+        newState.bathTempC = value;
+        newState.bathTempK = CtoK(value);
+    }
+    if (field == "bathTempK") {
+        newState.bathTempK = value;
+        newState.bathTempC = KtoC(value);
+    }
+    if (field == "humidity") {
+        newState.humidity = value;
+    }
+
+    if (target == "humidity")   solveHumidity(newState);
+    if (target == "bathTemp")   solveBathTemp(newState);
+    if (target == "sampleTemp") solveSampleTemp(newState);
+
+    return newState;
+}
+
+var solveHumidity = function() {
+
+}
 
 
 //equations to solve for the answers
@@ -103,69 +169,13 @@ var bathTemperature = function(relHum, sampTemp){
     	return(-c_ant+b_ant/(b_ant/(sampTemp+c_ant)-(log10(relHumE)))-CtoK);
 }
 
-//uses the inputted values to calculate answers, round to nearest hundredth
-//and insert them into the appropriate solution div
-function computeHumidity() {
-	var solutionC = parseFloat(humidity((inputValueSampleTemperature()+CtoK), (inputValueBathTemperature()+CtoK))).toFixed(2);
-	var solutionK = parseFloat(humidity(inputValueSampleTemperatureK(), inputValueBathTemperatureK())).toFixed(2);
-	if (solutionC != "NaN" && solutionK != "NaN") {
-	document.getElementById('humiditysolution').innerHTML = solutionK + " %";
-	document.getElementById('humidity').value = solutionK;
-	document.getElementById('humiditysolution').innerHTML = solutionC + " %";
-	document.getElementById('humidity').value = solutionC;
 
-	}
-
+function listener () {
+    // inside of event listener:
+    State = change(State, "sampleTempC", 123.0);
+    refreshUI(State);
 }
 
-function computeSampleTemperature() {
-	var solutionC = parseFloat((sampleTemperature(inputValueHumidity()+CtoK), (inputValueBathTemperature()+CtoK))).toFixed(2);
-	var solutionK = parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2);
-	if (solutionC != "NaN" && solutionK != "NaN") {
-		document.getElementById('sampletemperaturesolution').innerHTML = solutionC + " °C";
-		document.getElementById('sampletemperature').value = solutionC;
-		document.getElementById('sampletemperaturesolutionK').innerHTML = solutionK + " K";
-		document.getElementById('sampletemperatureK').value = solutionK;
-	}
-}
-
-function computeBathTemperature() {
-	var solutionC = parseFloat((bathTemperature(inputValueHumidity()+CtoK), (inputValueSampleTemperature()+CtoK))).toFixed(2);
-	var solutionK = parseFloat(sampleTemperature(inputValueHumidity(), inputValueBathTemperature())).toFixed(2);
-	if (solutionC != "NaN" && solutionK != "NaN") {
-	document.getElementById('bathtemperaturesolution').innerHTML = solutionC +" °C";
-	document.getElementById('bathtemperature').value = solutionC;
-	document.getElementById('bathtemperaturesolutionK').innerHTML = solutionK +" K";
-	document.getElementById('bathtemperatureK').value = solutionK;
-	}
-}
-
-var updateAndSolve = function(fieldId) {
-	return function () {
-		var currentField = document.getElementById(fieldId);
-		var id_string = String(currentField.id)
-		if (id_string.indexOf("K") !== -1) {
-			document.getElementById(id_string.replace('K', '')).value = parseFloat(currentField.value) - CtoK;
-		} else {
-			document.getElementById(id_string + "K").value = parseFloat(currentField.value) + CtoK;
-		};
-		solve();
-	};
-}
-
-
-
-//adding event listener to know that user has changed (entered) a value into the field
-document.getElementById("sampletemperature").addEventListener("change", updateAndSolve("sampletemperature"));
-document.getElementById("sampletemperature").addEventListener("keyup",  updateAndSolve("sampletemperature"));
-document.getElementById("bathtemperature").  addEventListener("change", updateAndSolve("bathtemperature"));
-document.getElementById("bathtemperature").  addEventListener("keyup",  updateAndSolve("bathtemperature"));
-document.getElementById("humidity").         addEventListener("change", solve);
-document.getElementById("humidity").         addEventListener("keyup",  solve);
-document.getElementById("sampletemperatureK").addEventListener("change", updateAndSolve("sampletemperatureK"));
-document.getElementById("sampletemperatureK").addEventListener("keyup",  updateAndSolve("sampletemperatureK"));
-document.getElementById("bathtemperatureK").  addEventListener("change", updateAndSolve("bathtemperatureK"));
-document.getElementById("bathtemperatureK").  addEventListener("keyup",  updateAndSolve("bathtemperatureK"));
 
 //tests to see if equations work with example data provided by matt
 
